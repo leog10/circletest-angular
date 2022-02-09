@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="progress-wrapper">
+    <div class="current" [ngStyle]="getOverlayStyle()">{{ current }}%</div>
+    <round-progress
+      [current]="current"
+      [max]="max"
+      [semicircle]="semicircle"
+      [radius]="radius"
+    ></round-progress>
+  </div>
+
+  <button (click)="increment()">+</button>
+  <button (click)="increment(-1)">-</button>
+
+  <button (click)="increment(10)">+ (10)</button>
+  <button (click)="increment(-10)">- (10)</button>
+
+  <br />
+
+  <button type="button" (click)="closeCircle()">&#x2716;</button>
+</div>

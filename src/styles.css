@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+.progress-wrapper {
+  position: relative;
+  margin: 20px auto;
+  font-size: 40px;
+}
+
+.current {
+  position: absolute;
+  color: #bbb;
+  font-weight: 100;
+  line-height: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 650px;
+  margin: 40px auto 80px;
+  text-align: center;
+  padding: px;
+  background: #fff;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+}
+
+.container {
+  margin: 0 auto 50px;
+  padding: 25px;
+}
+
+round-progress {
+  margin: auto;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #45ccce;
+  color: #fff;
+  font-size: px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: center;
+  margin: 0 5px 5px 0;
+}
+
+.closing {
+  animation: ease-in-out;
+  animation-name: closing;
+  animation-duration: 300ms;
+}
+
+@keyframes closing {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 2%;
+  }
+}
