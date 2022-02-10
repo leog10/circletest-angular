@@ -20,7 +20,14 @@ export class CircleService {
     // Add to the DOM
     document.body.appendChild(circleEl);
   }
-}
+
+  /* borrarCirculo(id: string) {
+    document.getElementById(id)?.setAttribute('class', 'closing');
+      setTimeout (() => {
+        this.circulos = this.circulos.filter((dato: { id: number; }) => dato.id !== id);
+     }, 250);
+  */
+} 
 
 
 /*

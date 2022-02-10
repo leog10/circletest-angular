@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -6,11 +7,13 @@ import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { AppComponent } from './app.component';
 import { CircleComponent } from './circle/circle.component';
 import { CircleService } from './services/circle.service';
+import { StartCirclesService } from './services/start-circles.service';
+import { StartCirclesComponent } from './start-circles/start-circles.component';
 
 @NgModule({
-  imports: [BrowserModule, BrowserAnimationsModule, RoundProgressModule],
-  providers: [CircleService],
-  declarations: [AppComponent, CircleComponent],
+  imports: [BrowserModule, BrowserAnimationsModule, RoundProgressModule, HttpClientModule],
+  providers: [CircleService, StartCirclesService],
+  declarations: [AppComponent, CircleComponent, StartCirclesComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {

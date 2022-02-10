@@ -45,7 +45,7 @@ button {
 }
 
 .closing {
-  animation: ease-in-out;
+  animation: cubic-bezier(0.075, 0.82, 0.165, 1);
   animation-name: closing;
   animation-duration: 300ms;
 }
@@ -55,6 +55,6 @@ button {
     opacity: 100%;
   }
   to {
-    opacity: 2%;
+    opacity: 0%;
   }
 }

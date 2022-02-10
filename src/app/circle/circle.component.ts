@@ -28,7 +28,7 @@ export class CircleComponent {
     this.closing.emit();
     setTimeout (() => {
       this.closed.emit();
-   }, 250);
+   }, 280);
   }
 
   // CIRCULO VARIABLES Y METODOS

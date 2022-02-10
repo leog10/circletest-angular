@@ -1,0 +1,24 @@
+<div class="container" *ngFor="let dato of circulos" [id]="dato.id">
+  <div class="progress-wrapper">
+    <div class="current" [ngStyle]="getOverlayStyle(dato.id)">
+      {{ dato.current }}%
+    </div>
+    <round-progress
+      [current]="dato.current"
+      [max]="dato.max"
+      [semicircle]="dato.semicircle"
+      [radius]="dato.radius"
+    ></round-progress>
+  </div>
+
+  <button (click)="increment(dato.id)">Increment</button>
+  <button (click)="decrement(dato.id)">Decrement</button>
+
+  <button (click)="increment(dato.id, 10)">Increment 10</button>
+  <button (click)="decrement(dato.id, 10)">Decrement 10</button>
+
+  <div>
+    <p>{{ dato.id }}</p>
+    <button (click)="borrarCirculo(dato.id)">&#x2716;</button>
+  </div>
+</div>
