@@ -35,7 +35,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
 
     setTimeout (() => {
-      console.log(this.circulos.length);  
       let addCircles = true; 
       if (this.circulos.length > 0 && addCircles) {
         this.startCircles.showAsElement();
