@@ -1,5 +1,5 @@
-export interface ICircles {
-    id: number;
+export interface ICircle {
+    id?: number;
     current: number;
     max: number;
     radius: number;

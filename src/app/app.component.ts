@@ -1,21 +1,22 @@
-import { AfterViewInit, Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { CircleService } from './services/circle.service';
 import { CircleComponent } from './circle/circle.component';
 import { StartCirclesService } from './services/start-circles.service';
 import { StartCirclesComponent } from './start-circles/start-circles.component';
-import { ICircles } from './ICircles';
 import { CirclesDbService } from './services/circles-db.service';
+import { Circle } from './Circle';
 
 @Component({
   selector: 'app-root',
   template: `
-    <button type="button" (click)="circle.showAsElement()">Single Add</button>
-    <button type="button" (click)="startCircles.showAsElement()">Add from JsonDB</button>
+  <div class="container">
+    <button type="button" [disabled]="buttonDisabled" (click)="createNewCirlce()">Crear Circulo</button>
+  </div>
   `,
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  constructor(injector: Injector, public circle: CircleService, public startCircles: StartCirclesService, public circlesDbService: CirclesDbService) {
+export class AppComponent implements OnInit {
+  constructor(injector: Injector, public circle: CircleService, public startCircles: StartCirclesService) {
     // Convert `PopupComponent` to a custom element.
     const CircleElement = createCustomElement(CircleComponent, {injector});
     const startCirclesEl = createCustomElement(StartCirclesComponent, {injector});
@@ -24,23 +25,18 @@ export class AppComponent implements OnInit, AfterViewInit {
     customElements.define('start-circles', startCirclesEl);
   }
   
-  circulos: ICircles[] = [];
+  buttonDisabled: boolean = false;
 
-  ngOnInit(): void {
-    this.circlesDbService.getData().subscribe((data) => {
-      this.circulos = data;
-    });
+  createNewCirlce() {
+    this.circle.showAsElement();
+    setTimeout(() => {      
+      this.buttonDisabled = false;
+    }, 800)
+    this.buttonDisabled = true;
   }
-
-  ngAfterViewInit(): void {
-
-    setTimeout (() => {
-      let addCircles = true; 
-      if (this.circulos.length > 0 && addCircles) {
-        this.startCircles.showAsElement();
-        addCircles = false;
-      }
-    }, 500);
+  
+  ngOnInit(): void {
+    this.startCircles.showAsElement();
   }
 }
 

@@ -12,21 +12,16 @@ export class CircleService {
   showAsElement() {
     // Create element
     const circleEl: NgElement & WithProperties<CircleComponent> = document.createElement('circle-element') as any;
-
+    
+    // Listen to the closing event
     circleEl.addEventListener('closing', () => circleEl.setAttribute('class','closing'));
+    
     // Listen to the close event
     circleEl.addEventListener('closed', () => document.body.removeChild(circleEl));
 
     // Add to the DOM
     document.body.appendChild(circleEl);
   }
-
-  /* borrarCirculo(id: string) {
-    document.getElementById(id)?.setAttribute('class', 'closing');
-      setTimeout (() => {
-        this.circulos = this.circulos.filter((dato: { id: number; }) => dato.id !== id);
-     }, 250);
-  */
 } 
 
 

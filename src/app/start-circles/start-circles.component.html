@@ -1,24 +1,33 @@
-<div class="container" *ngFor="let dato of circulos" [id]="dato.id">
+<div class="container" *ngFor="let circle of circulos" [id]="circle.id">
   <div class="progress-wrapper">
-    <div class="current" [ngStyle]="getOverlayStyle(dato.id)">
-      {{ dato.current }}%
+    <div class="current" [ngStyle]="getOverlayStyle(circle.id!)">
+      {{ circle.current }}%
     </div>
     <round-progress
-      [current]="dato.current"
-      [max]="dato.max"
-      [semicircle]="dato.semicircle"
-      [radius]="dato.radius"
+      [current]="circle.current"
+      [max]="circle.max"
+      [semicircle]="circle.semicircle"
+      [radius]="circle.radius"
     ></round-progress>
   </div>
 
-  <button (click)="increment(dato.id)">Increment</button>
-  <button (click)="decrement(dato.id)">Decrement</button>
+  <button (click)="increment(circle.id!)">Incrementar</button>
+  <button (click)="decrement(circle.id!)">Reducir</button>
 
-  <button (click)="increment(dato.id, 10)">Increment 10</button>
-  <button (click)="decrement(dato.id, 10)">Decrement 10</button>
+  <button (click)="increment(circle.id!, 10)">Incrementar (10)</button>
+  <button (click)="decrement(circle.id!, 10)">Reducir (10)</button>
 
   <div>
-    <p>{{ dato.id }}</p>
-    <button (click)="borrarCirculo(dato.id)">&#x2716;</button>
+    <p>{{ circle.id }}</p>
+    <button
+      [id]="'saveButton' + circle.id"
+      [disabled]="buttonDisabled"
+      (click)="saveCircle(circle)"
+    >
+      Guardar
+    </button>
+    <button [id]="'deleteButton' + circle.id" (click)="borrarCirculo(circle)">
+      Borrar
+    </button>
   </div>
 </div>

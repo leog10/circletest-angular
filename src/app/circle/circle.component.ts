@@ -1,5 +1,8 @@
-import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ICircle } from '../ICircles';
+import { CirclesDbService } from '../services/circles-db.service';
+import { Circle } from '../Circle';
 
 @Component({
   selector: 'my-circle',
@@ -15,35 +18,61 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 
 export class CircleComponent {
+  constructor(private circlesDbService: CirclesDbService) { }
+
+  buttonDisabled: boolean = true;
+
   @HostBinding('@state')
   state: 'opened' | 'closed' = 'opened';
 
   @Output()
   closed = new EventEmitter<void>();
+  
+  @Output()
+  deleteCircle = new EventEmitter<ICircle>();
 
   @Output()
   closing = new EventEmitter<void>();
 
-  closeCircle() {
+  circulos: ICircle[] = [];
+
+  circle: ICircle = new Circle;
+
+  borrarCirculoEnDb(circle: ICircle) {
+    this.circlesDbService.deleteCircle(circle).subscribe(() =>{
+      this.circulos = this.circulos.filter((dato) => dato.id !== circle.id);
+    })
+  }
+
+  borrarCirculo(circle: ICircle) {
     this.closing.emit();
+    (<HTMLInputElement> document.getElementById('deleteButton'+(this.circle.id?.toString()))).disabled = true;
+    (<HTMLInputElement> document.getElementById('saveButton'+(this.circle.id?.toString()))).disabled = true;
     setTimeout (() => {
       this.closed.emit();
-   }, 280);
+      this.borrarCirculoEnDb(circle);      
+   }, 450);
+  }
+
+  saveCircle(circle: ICircle) {
+    this.circlesDbService.updateCircle(circle).subscribe();
+    (<HTMLInputElement> document.getElementById('saveButton'+(this.circle.id?.toString()))).disabled = true;
   }
 
   // CIRCULO VARIABLES Y METODOS
 
-  current: number = 10;
-  max: number = 100;
-  radius: number = 50;
-  semicircle: boolean = false;
-
   increment(amount = 1) {
-    this.current += amount;
+    this.circle.current += amount;
+    document.getElementById('saveButton'+(this.circle.id?.toString()))?.removeAttribute('disabled');
+  }
+
+  decrement(amount = 1) {
+    this.circle.current -= amount;
+    document.getElementById('saveButton'+(this.circle.id?.toString()))?.removeAttribute('disabled');
   }
 
   getOverlayStyle() {
-    const isSemi = this.semicircle;
+    const isSemi = this.circle.semicircle;
     const transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(-50%)';
 
     return {
@@ -51,8 +80,27 @@ export class CircleComponent {
       bottom: isSemi ? '5%' : 'auto',
       left: '50%',
       transform,
-      'font-size': this.radius / 3.5 + 'px',
+      'font-size': this.circle.radius / 3.5 + 'px',
     };
+  }
+
+  getCirclesFromDb() {
+    this.circlesDbService.getData().subscribe((data) => {
+      let idIterator = 1;
+      for (let circle of data ) {
+        if (idIterator === circle.id) {
+          idIterator++;
+        }
+      }
+      this.circle.id = idIterator;
+    });
+  }
+
+  ngOnInit(): void {
+    this.getCirclesFromDb();
+    setTimeout (() => {
+    this.circlesDbService.addCircle(this.circle).subscribe();
+   }, 100);
   }
 }
 

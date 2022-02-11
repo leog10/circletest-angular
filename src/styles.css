@@ -44,10 +44,14 @@ button {
   margin: 0 5px 5px 0;
 }
 
+button:disabled {
+  background: #cccccc;
+}
+
 .closing {
   animation: cubic-bezier(0.075, 0.82, 0.165, 1);
   animation-name: closing;
-  animation-duration: 300ms;
+  animation-duration: 500ms;
 }
 
 @keyframes closing {

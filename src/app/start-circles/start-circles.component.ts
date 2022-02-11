@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostBinding, OnInit, Output } from '@angular/core';
 import { CirclesDbService } from '../services/circles-db.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ICircles } from '../ICircles';
+import { ICircle } from '../ICircles';
 
 @Component({
   selector: 'app-start-circles',
@@ -18,19 +18,26 @@ import { ICircles } from '../ICircles';
 export class StartCirclesComponent implements OnInit {
 
   constructor(private circlesDbService: CirclesDbService) { }
+  circulos: ICircle[] = [];
 
+  buttonDisabled: boolean = true;
+  
   @HostBinding('@state')
   state: 'opened' | 'closed' = 'opened';
 
   @Output()
   closed = new EventEmitter<void>();
 
-  circulos: ICircles[] = [];
+  saveCircle(circle: ICircle) {
+    (<HTMLInputElement> document.getElementById('saveButton'+(circle.id?.toString()))).disabled = true;
+    this.circlesDbService.updateCircle(circle).subscribe();
+  }
 
   increment(id: number, amount = 1) {
     for (let dato of this.circulos) {
       if (dato.id === id) {
         dato.current += amount;
+        document.getElementById('saveButton'+(id.toString()))?.removeAttribute('disabled');
       }
     }
   }
@@ -39,6 +46,7 @@ export class StartCirclesComponent implements OnInit {
     for (let dato of this.circulos) {
       if (dato.id === id) {
         dato.current -= amount;
+        document.getElementById('saveButton'+(id.toString()))?.removeAttribute('disabled');
       }
     }
   }
@@ -65,26 +73,39 @@ export class StartCirclesComponent implements OnInit {
     };
   }
 
-  addNewCircle() {
-    return;
+  //Borra el objeto en la base de datos segun el id pasado por parametro.
+  borrarCirculoEnDb(circle: ICircle) {
+    this.circlesDbService.deleteCircle(circle).subscribe(() =>{
+      this.circulos = this.circulos.filter((dato) => dato.id !== circle.id);
+    })
   }
 
-  borrarCirculo(id: number) {
-    const _idToSring = id.toString();   
-
+  //Borra el Custom Element del DOM y borra el objeto de la base de datos.
+  borrarCirculo(circle: ICircle) {
+    (<HTMLInputElement> document.getElementById('deleteButton'+(circle.id?.toString()))).disabled = true;
+    (<HTMLInputElement> document.getElementById('saveButton'+(circle.id?.toString()))).disabled = true;
+    //Pasa el parametro id a string para manipular el DOM con getElementById que recibe un string como parametro.
+    const _idToSring = circle.id!.toString();
+    //Agrega la clase ' closing' con espacio para no generar conflicto con las clases existentes.
+    //La clase .closing le da una animacion al eliminar el elemento.
     document.getElementById(_idToSring)!.className += ' closing';
+    //Se crea un delay antes de eliminar el elemento para dar tiempo a la animacion de cierre a mostrarse en pantalla.
     setTimeout (() => {
-      this.circulos = this.circulos.filter((dato) => dato.id !== id);
+      this.borrarCirculoEnDb(circle);
       if (this.circulos.length === 0) {
         this.closed.emit();
       }      
-    }, 280);    
+    }, 350);    
   }
 
-  ngOnInit(): void {
+  getCirclesFromDb() {
     this.circlesDbService.getData().subscribe((data) => {
       this.circulos = data;
     });
+  }
+  
+  ngOnInit(): void {
+    this.getCirclesFromDb();
   }
 
 }
