@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { NgElement, WithProperties } from '@angular/elements';
 import { CircleComponent } from '../circle/circle.component';

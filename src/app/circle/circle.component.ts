@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ICircle } from '../ICircles';
 import { CirclesDbService } from '../services/circles-db.service';

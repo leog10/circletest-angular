@@ -4,8 +4,6 @@ import { CircleService } from './services/circle.service';
 import { CircleComponent } from './circle/circle.component';
 import { StartCirclesService } from './services/start-circles.service';
 import { StartCirclesComponent } from './start-circles/start-circles.component';
-import { CirclesDbService } from './services/circles-db.service';
-import { Circle } from './Circle';
 
 @Component({
   selector: 'app-root',
