@@ -1,3 +1,18 @@
 {
-  "circles": []
+  "circles": [
+    {
+      "current": 10,
+      "max": 100,
+      "radius": 50,
+      "semicircle": true,
+      "id": 1
+    },
+    {
+      "current": 70,
+      "max": 100,
+      "radius": 50,
+      "semicircle": true,
+      "id": 2
+    }
+  ]
 }

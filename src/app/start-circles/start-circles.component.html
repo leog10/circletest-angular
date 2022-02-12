@@ -1,4 +1,4 @@
-<ng-container *ngIf="hasRoute('/edicion')">
+<ng-container *ngIf="hasRoute('/edicion'); else noEditCircles">
   <div class="container" *ngFor="let circle of circulos" [id]="circle.id">
     <div class="progress-wrapper">
       <div class="current" [ngStyle]="getOverlayStyle(circle.id!)">
@@ -33,3 +33,19 @@
     </div>
   </div>
 </ng-container>
+<ng-template #noEditCircles>
+  <div class="container" *ngFor="let circle of circulos" [id]="circle.id">
+    <div class="progress-wrapper">
+      <div class="current" [ngStyle]="getOverlayStyle(circle.id!)">
+        {{ circle.current }}%
+      </div>
+      <round-progress
+        [current]="circle.current"
+        [max]="circle.max"
+        [semicircle]="circle.semicircle"
+        [radius]="circle.radius"
+      ></round-progress>
+    </div>
+    <p>{{ circle.id }}</p>
+  </div>
+</ng-template>
