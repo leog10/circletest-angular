@@ -1,0 +1,9 @@
+<div class="header">
+  <h1>INICIO de CIRCULOS!</h1>
+</div>
+<div class="container">
+  <a *ngIf="hasRoute('/')" routerLink="/edicion">
+    <button>Agregar Circulos</button>
+  </a>
+  <a *ngIf="!hasRoute('/')" routerLink="/"><button>Volver a Inicio</button></a>
+</div>

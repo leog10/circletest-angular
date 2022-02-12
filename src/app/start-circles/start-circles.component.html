@@ -1,33 +1,35 @@
-<div class="container" *ngFor="let circle of circulos" [id]="circle.id">
-  <div class="progress-wrapper">
-    <div class="current" [ngStyle]="getOverlayStyle(circle.id!)">
-      {{ circle.current }}%
+<ng-container *ngIf="hasRoute('/edicion')">
+  <div class="container" *ngFor="let circle of circulos" [id]="circle.id">
+    <div class="progress-wrapper">
+      <div class="current" [ngStyle]="getOverlayStyle(circle.id!)">
+        {{ circle.current }}%
+      </div>
+      <round-progress
+        [current]="circle.current"
+        [max]="circle.max"
+        [semicircle]="circle.semicircle"
+        [radius]="circle.radius"
+      ></round-progress>
     </div>
-    <round-progress
-      [current]="circle.current"
-      [max]="circle.max"
-      [semicircle]="circle.semicircle"
-      [radius]="circle.radius"
-    ></round-progress>
+
+    <button (click)="increment(circle.id!)">Incrementar</button>
+    <button (click)="decrement(circle.id!)">Reducir</button>
+
+    <button (click)="increment(circle.id!, 10)">Incrementar (10)</button>
+    <button (click)="decrement(circle.id!, 10)">Reducir (10)</button>
+
+    <div>
+      <p>{{ circle.id }}</p>
+      <button
+        [id]="'saveButton' + circle.id"
+        [disabled]="buttonDisabled"
+        (click)="saveCircle(circle)"
+      >
+        Guardar
+      </button>
+      <button [id]="'deleteButton' + circle.id" (click)="borrarCirculo(circle)">
+        Borrar
+      </button>
+    </div>
   </div>
-
-  <button (click)="increment(circle.id!)">Incrementar</button>
-  <button (click)="decrement(circle.id!)">Reducir</button>
-
-  <button (click)="increment(circle.id!, 10)">Incrementar (10)</button>
-  <button (click)="decrement(circle.id!, 10)">Reducir (10)</button>
-
-  <div>
-    <p>{{ circle.id }}</p>
-    <button
-      [id]="'saveButton' + circle.id"
-      [disabled]="buttonDisabled"
-      (click)="saveCircle(circle)"
-    >
-      Guardar
-    </button>
-    <button [id]="'deleteButton' + circle.id" (click)="borrarCirculo(circle)">
-      Borrar
-    </button>
-  </div>
-</div>
+</ng-container>

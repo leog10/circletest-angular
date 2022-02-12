@@ -3,6 +3,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { ICircle } from '../ICircles';
 import { CirclesDbService } from '../services/circles-db.service';
 import { Circle } from '../Circle';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'my-circle',
@@ -18,7 +19,11 @@ import { Circle } from '../Circle';
 })
 
 export class CircleComponent {
-  constructor(private circlesDbService: CirclesDbService) { }
+  constructor(private circlesDbService: CirclesDbService, private router: Router) { }
+
+  hasRoute(route: string) {
+    return this.router.url === route;
+  }
 
   buttonDisabled: boolean = true;
 

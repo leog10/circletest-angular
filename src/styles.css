@@ -14,17 +14,13 @@
 .container {
   width: 100%;
   max-width: 650px;
-  margin: 40px auto 80px;
+  margin: 40px auto;
+  padding: 25px;
   text-align: center;
   padding: px;
   background: #fff;
   border: solid 1px #ccc;
   border-radius: 4px;
-}
-
-.container {
-  margin: 0 auto 50px;
-  padding: 25px;
 }
 
 round-progress {

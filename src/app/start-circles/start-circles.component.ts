@@ -2,6 +2,7 @@ import { Component, EventEmitter, HostBinding, OnInit, Output } from '@angular/c
 import { CirclesDbService } from '../services/circles-db.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ICircle } from '../ICircles';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-start-circles',
@@ -17,7 +18,12 @@ import { ICircle } from '../ICircles';
 })
 export class StartCirclesComponent implements OnInit {
 
-  constructor(private circlesDbService: CirclesDbService) { }
+  constructor(private circlesDbService: CirclesDbService, private router: Router) { }
+
+  hasRoute(route: string) {
+    return this.router.url === route;
+  }
+
   circulos: ICircle[] = [];
 
   buttonDisabled: boolean = true;

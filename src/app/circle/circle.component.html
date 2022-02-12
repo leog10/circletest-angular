@@ -1,4 +1,4 @@
-<div class="container" [id]="circle.id">
+<div *ngIf="hasRoute('/edicion')" class="container" [id]="circle.id">
   <div class="progress-wrapper">
     <div class="current" [ngStyle]="getOverlayStyle()">
       {{ circle.current }}%
