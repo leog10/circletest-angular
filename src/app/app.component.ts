@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { CircleComponent } from './circle/circle.component';
 import { StartCirclesComponent } from './start-circles/start-circles.component';
@@ -9,7 +9,7 @@ import { StartCirclesComponent } from './start-circles/start-circles.component';
 })
 export class AppComponent {
   constructor(injector: Injector) {
-    // Convert `PopupComponent` to a custom element.
+    // Convert `CircleComponent and StartCirclesComponent` to a custom element.
     const CircleElement = createCustomElement(CircleComponent, {injector});
     const startCirclesEl = createCustomElement(StartCirclesComponent, {injector});
     // Register the custom element with the browser.

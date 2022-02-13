@@ -14,10 +14,10 @@
 .container {
   width: 100%;
   max-width: 650px;
-  margin: 40px auto;
+  margin: 40px auto 40px;
   padding: 25px;
   text-align: center;
-  padding: px;
+  padding: 25px;
   background: #fff;
   border: solid 1px #ccc;
   border-radius: 4px;
@@ -44,6 +44,11 @@ button:disabled {
   background: #cccccc;
 }
 
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .closing {
   animation: cubic-bezier(0.075, 0.82, 0.165, 1);
   animation-name: closing;
@@ -57,4 +62,44 @@ button:disabled {
   to {
     opacity: 0%;
   }
+}
+
+form {
+  text-align: left;
+  max-width: 350px;
+  margin: 30px auto;
+}
+
+form > div {
+  margin-bottom: 15px;
+}
+
+input,
+select {
+  float: right;
+  padding: 5px;
+  width: 150px;
+}
+
+input[type="checkbox"] {
+  width: auto;
+}
+
+input[type="color"] {
+  height: 30px;
+}
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.editCurrentContainer {
+  display: flex;
+  justify-content: center;
 }

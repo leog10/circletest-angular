@@ -13,20 +13,13 @@ import { Router } from '@angular/router';
     trigger('state', [
       state('opened', style({transform: 'translateX(0%)'})),
       state('void, closed', style({transform: 'translateX(0%)', opacity: 0})),
-      transition('* => *', animate('300ms ease-in-out')),
+      transition('* => *', animate('450ms ease-in')),
     ])
   ],
 })
 
 export class CircleComponent {
   constructor(private circlesDbService: CirclesDbService, private router: Router) { }
-
-  hasRoute(route: string) {
-    return this.router.url === route;
-  }
-
-  buttonDisabled: boolean = true;
-
   @HostBinding('@state')
   state: 'opened' | 'closed' = 'opened';
 
@@ -39,9 +32,33 @@ export class CircleComponent {
   @Output()
   closing = new EventEmitter<void>();
 
+  hasRoute(route: string) {
+    return this.router.url === route;
+  }
+
+  buttonDisabled: boolean = true;
+
   circulos: ICircle[] = [];
 
   circle: ICircle = new Circle;
+
+  defaultCircle: ICircle = new Circle;
+
+  //Verifica que el circulo creado tenga al menos una modificacion en sus propiedades para habilitar el boton "Guardar"
+  hasChanges(circle: ICircle): boolean {
+    // Crea un nuevo objeto a partir de defaultCircle y crea un nuevo objeto a partir del circulo creado circle\
+    // Se borra el id de ambos ya que _defCircle tiene id:undefined y _circle tiene el id asignado al ejecutarse el metodo ngOnInit
+    // De esta manera ambos objetos se pueden comparar por las demas propiedades evitando el id.
+    var _defCircle = Object.assign({}, this.defaultCircle);
+    var _circle = Object.assign({}, circle);
+    delete _defCircle.id;
+    delete _circle.id;
+
+    if (JSON.stringify(_defCircle) === JSON.stringify(_circle)) {
+      return true;
+    }    
+    return false;
+  }
 
   borrarCirculoEnDb(circle: ICircle) {
     this.circlesDbService.deleteCircle(circle).subscribe(() =>{
@@ -68,12 +85,10 @@ export class CircleComponent {
 
   increment(amount = 1) {
     this.circle.current += amount;
-    document.getElementById('saveButton'+(this.circle.id?.toString()))?.removeAttribute('disabled');
   }
 
   decrement(amount = 1) {
     this.circle.current -= amount;
-    document.getElementById('saveButton'+(this.circle.id?.toString()))?.removeAttribute('disabled');
   }
 
   getOverlayStyle() {
@@ -89,6 +104,7 @@ export class CircleComponent {
     };
   }
 
+  //Obtiene los objetos de la database y por iteracion le asigna una id unica al nuevo circulo
   getCirclesFromDb() {
     this.circlesDbService.getData().subscribe((data) => {
       let idIterator = 1;

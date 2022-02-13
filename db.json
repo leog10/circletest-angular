@@ -1,17 +1,35 @@
 {
   "circles": [
     {
-      "current": 10,
+      "current": 50,
       "max": 100,
-      "radius": 50,
-      "semicircle": true,
+      "radius": 80,
+      "semicircle": false,
+      "stroke": 25,
+      "rounded": true,
+      "responsive": false,
+      "clockwise": true,
+      "color": "#1a1a1a",
+      "background": "#eaeaea",
+      "duration": 2000,
+      "animation": "easeOutBounce",
+      "animationDelay": 0,
       "id": 1
     },
     {
-      "current": 70,
+      "current": 80,
       "max": 100,
-      "radius": 50,
-      "semicircle": true,
+      "radius": 80,
+      "semicircle": false,
+      "stroke": 25,
+      "rounded": true,
+      "responsive": false,
+      "clockwise": true,
+      "color": "#4653ce",
+      "background": "#eaeaea",
+      "duration": 2000,
+      "animation": "easeOutBounce",
+      "animationDelay": 0,
       "id": 2
     }
   ]

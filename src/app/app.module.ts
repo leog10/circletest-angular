@@ -14,6 +14,7 @@ import { StartCirclesComponent } from './start-circles/start-circles.component';
 import { InicioComponent } from './rutas/inicio/inicio.component';
 import { EdicionComponent } from './rutas/edicion/edicion.component';
 import { HeaderComponent } from './rutas/header/header.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '', component: InicioComponent, pathMatch: 'full'},
@@ -21,7 +22,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [BrowserModule, BrowserAnimationsModule, RoundProgressModule, HttpClientModule, RouterModule.forRoot(routes)],
+  imports: [BrowserModule, BrowserAnimationsModule, RoundProgressModule, HttpClientModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(routes)],
   providers: [CircleService, StartCirclesService, Circle],
   declarations: [AppComponent, CircleComponent, StartCirclesComponent, InicioComponent, EdicionComponent, HeaderComponent],
   bootstrap: [AppComponent],

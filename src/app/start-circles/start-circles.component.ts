@@ -3,6 +3,7 @@ import { CirclesDbService } from '../services/circles-db.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ICircle } from '../ICircles';
 import { Router } from '@angular/router';
+import { Circle } from '../Circle';
 
 @Component({
   selector: 'app-start-circles',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
     trigger('state', [
       state('opened', style({transform: 'translateX(0%)'})),
       state('void, closed', style({transform: 'translateX(0%)', opacity: 0})),
-      transition('* => *', animate('500ms ease-in')),
+      transition('* => *', animate('450ms ease-in')),
     ])
   ],
 })
@@ -26,6 +27,8 @@ export class StartCirclesComponent implements OnInit {
 
   circulos: ICircle[] = [];
 
+  defaultCircle: ICircle = new Circle;
+
   buttonDisabled: boolean = true;
   
   @HostBinding('@state')
@@ -33,6 +36,22 @@ export class StartCirclesComponent implements OnInit {
 
   @Output()
   closed = new EventEmitter<void>();
+
+  //Verifica que el circulo creado tenga al menos una modificacion en sus propiedades para habilitar el boton "Guardar"
+  hasChanges(circle: ICircle): boolean {
+    // Crea un nuevo objeto a partir de defaultCircle y crea un nuevo objeto a partir del circulo creado circle\
+    // Se borra el id de ambos ya que _defCircle tiene id:undefined y _circle tiene el id asignado al ejecutarse el metodo ngOnInit
+    // De esta manera ambos objetos se pueden comparar por las demas propiedades evitando el id.
+    var _defCircle = Object.assign({}, this.defaultCircle);
+    var _circle = Object.assign({}, circle);
+    delete _defCircle.id;
+    delete _circle.id;
+
+    if (JSON.stringify(_defCircle) === JSON.stringify(_circle)) {
+      return true;
+    }    
+    return false;
+  }
 
   saveCircle(circle: ICircle) {
     (<HTMLInputElement> document.getElementById('saveButton'+(circle.id?.toString()))).disabled = true;
@@ -101,7 +120,7 @@ export class StartCirclesComponent implements OnInit {
       if (this.circulos.length === 0) {
         this.closed.emit();
       }      
-    }, 350);    
+    }, 450);    
   }
 
   getCirclesFromDb() {

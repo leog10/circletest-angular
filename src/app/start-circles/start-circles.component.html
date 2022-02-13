@@ -9,6 +9,15 @@
         [max]="circle.max"
         [semicircle]="circle.semicircle"
         [radius]="circle.radius"
+        [color]="circle.color"
+        [background]="circle.background"
+        [stroke]="circle.stroke"
+        [rounded]="circle.rounded"
+        [clockwise]="circle.clockwise"
+        [responsive]="circle.responsive"
+        [duration]="circle.duration"
+        [animation]="circle.animation"
+        [animationDelay]="circle.animationDelay"
       ></round-progress>
     </div>
 
@@ -18,20 +27,145 @@
     <button (click)="increment(circle.id!, 10)">Incrementar (10)</button>
     <button (click)="decrement(circle.id!, 10)">Reducir (10)</button>
 
-    <div>
-      <p>{{ circle.id }}</p>
-      <button
-        [id]="'saveButton' + circle.id"
-        [disabled]="buttonDisabled"
-        (click)="saveCircle(circle)"
-      >
-        Guardar
-      </button>
-      <button [id]="'deleteButton' + circle.id" (click)="borrarCirculo(circle)">
-        Borrar
-      </button>
-    </div>
+    <!-- ///////////////////////////////////////////// -->
+
+    <form>
+      <h3>Customize!</h3>
+
+      <div class="cf">
+        <label for="semicircle">Semicircle:</label>
+        <input
+          id="semicircle"
+          name="semicircle"
+          type="checkbox"
+          [(ngModel)]="circle.semicircle"
+        />
+      </div>
+
+      <div class="cf">
+        <label for="responsive">Responsive:</label>
+        <input
+          id="responsive"
+          name="responsive"
+          type="checkbox"
+          [(ngModel)]="circle.responsive"
+        />
+      </div>
+
+      <div class="cf">
+        <label for="rounded">Rounded:</label>
+        <input
+          id="rounded"
+          name="rounded"
+          type="checkbox"
+          [(ngModel)]="circle.rounded"
+        />
+      </div>
+
+      <div class="cf">
+        <label for="clockwise">Clockwise:</label>
+        <input
+          id="clockwise"
+          name="clockwise"
+          type="checkbox"
+          [(ngModel)]="circle.clockwise"
+        />
+      </div>
+
+      <div class="cf">
+        <label for="current">Current:</label>
+        <input
+          id="current"
+          name="current"
+          type="number"
+          [(ngModel)]="circle.current"
+        />
+      </div>
+
+      <div class="cf">
+        <label for="max">Max:</label>
+        <input id="max" name="max" type="number" [(ngModel)]="circle.max" />
+      </div>
+
+      <div class="cf">
+        <label for="stroke">Stroke:</label>
+        <input
+          id="stroke"
+          name="stroke"
+          type="number"
+          [(ngModel)]="circle.stroke"
+        />
+      </div>
+
+      <div class="cf">
+        <label for="radius">Radius:</label>
+        <input
+          id="radius"
+          name="radius"
+          type="number"
+          [(ngModel)]="circle.radius"
+        />
+      </div>
+
+      <div class="cf">
+        <label for="duration">Duration:</label>
+        <input
+          id="duration"
+          name="duration"
+          type="number"
+          [(ngModel)]="circle.duration"
+        />
+      </div>
+
+      <div class="cf">
+        <label for="animationDelay">Animation delay:</label>
+        <input
+          id="animationDelay"
+          name="animationDelay"
+          type="number"
+          [(ngModel)]="circle.animationDelay"
+        />
+      </div>
+
+      <div class="cf">
+        <label for="color">Color:</label>
+        <input
+          id="color"
+          name="color"
+          type="color"
+          [(ngModel)]="circle.color"
+        />
+      </div>
+
+      <div class="cf">
+        <label for="background">Background color:</label>
+        <input
+          id="background"
+          name="background"
+          type="color"
+          [(ngModel)]="circle.background"
+        />
+      </div>
+
+      <div class="buttonContainer">
+        <button
+          [id]="'saveButton' + circle.id"
+          [disabled]="hasChanges(circle)"
+          (click)="saveCircle(circle)"
+        >
+          Guardar
+        </button>
+        <button
+          [id]="'deleteButton' + circle.id"
+          (click)="borrarCirculo(circle)"
+        >
+          Borrar
+        </button>
+      </div>
+    </form>
   </div>
+
+  <!-- ///////////////////////////////////////////// -->
 </ng-container>
 <ng-template #noEditCircles>
   <div class="container" *ngFor="let circle of circulos" [id]="circle.id">
@@ -44,8 +178,16 @@
         [max]="circle.max"
         [semicircle]="circle.semicircle"
         [radius]="circle.radius"
+        [color]="circle.color"
+        [background]="circle.background"
+        [stroke]="circle.stroke"
+        [rounded]="circle.rounded"
+        [clockwise]="circle.clockwise"
+        [responsive]="circle.responsive"
+        [duration]="circle.duration"
+        [animation]="circle.animation"
+        [animationDelay]="circle.animationDelay"
       ></round-progress>
     </div>
-    <p>{{ circle.id }}</p>
   </div>
 </ng-template>
