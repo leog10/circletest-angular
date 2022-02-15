@@ -1,4 +1,4 @@
-<ng-container *ngIf="hasRoute('/edicion'); else noEditCircles">
+<ng-container *ngIf="hasRoute('/edicion')">
   <div class="container" *ngFor="let circle of circulos" [id]="circle.id">
     <div class="progress-wrapper">
       <div class="current" [ngStyle]="getOverlayStyle(circle.id!)">
@@ -26,8 +26,6 @@
 
     <button (click)="increment(circle.id!, 10)">Incrementar (10)</button>
     <button (click)="decrement(circle.id!, 10)">Reducir (10)</button>
-
-    <!-- ///////////////////////////////////////////// -->
 
     <form>
       <h3>Customize!</h3>
@@ -150,7 +148,7 @@
       <div class="buttonContainer">
         <button
           [id]="'saveButton' + circle.id"
-          [disabled]="hasChanges(circle)"
+          [disabled]="false"
           (click)="saveCircle(circle)"
         >
           Guardar
@@ -164,30 +162,4 @@
       </div>
     </form>
   </div>
-
-  <!-- ///////////////////////////////////////////// -->
 </ng-container>
-<ng-template #noEditCircles>
-  <div class="container" *ngFor="let circle of circulos" [id]="circle.id">
-    <div class="progress-wrapper">
-      <div class="current" [ngStyle]="getOverlayStyle(circle.id!)">
-        {{ circle.current }}%
-      </div>
-      <round-progress
-        [current]="circle.current"
-        [max]="circle.max"
-        [semicircle]="circle.semicircle"
-        [radius]="circle.radius"
-        [color]="circle.color"
-        [background]="circle.background"
-        [stroke]="circle.stroke"
-        [rounded]="circle.rounded"
-        [clockwise]="circle.clockwise"
-        [responsive]="circle.responsive"
-        [duration]="circle.duration"
-        [animation]="circle.animation"
-        [animationDelay]="circle.animationDelay"
-      ></round-progress>
-    </div>
-  </div>
-</ng-template>

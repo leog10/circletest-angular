@@ -37,25 +37,30 @@ export class StartCirclesComponent implements OnInit {
   @Output()
   closed = new EventEmitter<void>();
 
-  //Verifica que el circulo creado tenga al menos una modificacion en sus propiedades para habilitar el boton "Guardar"
-  hasChanges(circle: ICircle): boolean {
-    // Crea un nuevo objeto a partir de defaultCircle y crea un nuevo objeto a partir del circulo creado circle\
-    // Se borra el id de ambos ya que _defCircle tiene id:undefined y _circle tiene el id asignado al ejecutarse el metodo ngOnInit
-    // De esta manera ambos objetos se pueden comparar por las demas propiedades evitando el id.
-    var _defCircle = Object.assign({}, this.defaultCircle);
-    var _circle = Object.assign({}, circle);
-    delete _defCircle.id;
-    delete _circle.id;
+  countdownTimer(timerInSeconds: number, element: HTMLInputElement, textToShow: string){
+    let startTime = timerInSeconds;
+    element.innerHTML = `${textToShow} (${startTime})`;
+    let interval = setInterval(function(){
+      if(startTime === 1){
+        element.innerHTML = `${textToShow}`;
+        clearInterval(interval);
+        return;
+      }
+      startTime--;
+      element.innerHTML = `${textToShow} (${startTime})`;
+    }, 1000);
 
-    if (JSON.stringify(_defCircle) === JSON.stringify(_circle)) {
-      return true;
-    }    
-    return false;
+    setTimeout(() => {
+      element.disabled = false;
+    }, (timerInSeconds * 1000));
   }
 
   saveCircle(circle: ICircle) {
-    (<HTMLInputElement> document.getElementById('saveButton'+(circle.id?.toString()))).disabled = true;
     this.circlesDbService.updateCircle(circle).subscribe();
+    let buttonSave = (<HTMLInputElement> document.getElementById('saveButton'+(circle.id?.toString())));
+    buttonSave.disabled = true;
+
+    this.countdownTimer(5, buttonSave, 'Guardar');
   }
 
   increment(id: number, amount = 1) {

@@ -42,24 +42,6 @@ export class CircleComponent {
 
   circle: ICircle = new Circle;
 
-  defaultCircle: ICircle = new Circle;
-
-  //Verifica que el circulo creado tenga al menos una modificacion en sus propiedades para habilitar el boton "Guardar"
-  hasChanges(circle: ICircle): boolean {
-    // Crea un nuevo objeto a partir de defaultCircle y crea un nuevo objeto a partir del circulo creado circle\
-    // Se borra el id de ambos ya que _defCircle tiene id:undefined y _circle tiene el id asignado al ejecutarse el metodo ngOnInit
-    // De esta manera ambos objetos se pueden comparar por las demas propiedades evitando el id.
-    var _defCircle = Object.assign({}, this.defaultCircle);
-    var _circle = Object.assign({}, circle);
-    delete _defCircle.id;
-    delete _circle.id;
-
-    if (JSON.stringify(_defCircle) === JSON.stringify(_circle)) {
-      return true;
-    }    
-    return false;
-  }
-
   borrarCirculoEnDb(circle: ICircle) {
     this.circlesDbService.deleteCircle(circle).subscribe(() =>{
       this.circulos = this.circulos.filter((dato) => dato.id !== circle.id);
@@ -76,9 +58,31 @@ export class CircleComponent {
    }, 450);
   }
 
+  countdownTimer(timerInSeconds: number, element: HTMLInputElement, textToShow: string){
+    let startTime = timerInSeconds;
+    element.innerHTML = `${textToShow} (${startTime})`;
+    let interval = setInterval(function(){
+      if(startTime === 1){
+        element.innerHTML = `${textToShow}`;
+        clearInterval(interval);
+        return;
+      }
+      startTime--;
+      element.innerHTML = `${textToShow} (${startTime})`;
+    }, 1000);
+
+    setTimeout(() => {
+      element.disabled = false;
+    }, (timerInSeconds * 1000));
+  }
+
   saveCircle(circle: ICircle) {
     this.circlesDbService.updateCircle(circle).subscribe();
-    (<HTMLInputElement> document.getElementById('saveButton'+(this.circle.id?.toString()))).disabled = true;
+
+    let buttonSave = (<HTMLInputElement> document.getElementById('saveButton'+(this.circle.id?.toString())));
+    buttonSave.disabled = true;
+
+    this.countdownTimer(5,buttonSave,'Guardar');
   }
 
   // CIRCULO VARIABLES Y METODOS

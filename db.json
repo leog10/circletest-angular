@@ -1,7 +1,7 @@
 {
   "circles": [
     {
-      "current": 50,
+      "current": 51,
       "max": 100,
       "radius": 80,
       "semicircle": false,
@@ -9,15 +9,15 @@
       "rounded": true,
       "responsive": false,
       "clockwise": true,
-      "color": "#1a1a1a",
+      "color": "#ce9546",
       "background": "#eaeaea",
-      "duration": 2000,
+      "duration": 800,
       "animation": "easeOutBounce",
       "animationDelay": 0,
       "id": 1
     },
     {
-      "current": 80,
+      "current": 61,
       "max": 100,
       "radius": 80,
       "semicircle": false,
@@ -25,9 +25,9 @@
       "rounded": true,
       "responsive": false,
       "clockwise": true,
-      "color": "#4653ce",
+      "color": "#701daf",
       "background": "#eaeaea",
-      "duration": 2000,
+      "duration": 800,
       "animation": "easeOutBounce",
       "animationDelay": 0,
       "id": 2
