@@ -16,4 +16,6 @@ export class Circle implements ICircle {
     duration: number = 800;
     animation: string = 'easeOutBounce';
     animationDelay: number = 0;
+
+    title: string = "Ingrese un Titulo";
 }

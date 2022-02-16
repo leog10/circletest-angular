@@ -2,6 +2,17 @@ h1 {
   margin: 10px auto;
 }
 
+.circleTitleContainer {
+  display: inline-flex;
+  width: auto;
+}
+
+.circleTitle {
+  text-align: center;
+  font-size: 35px;
+  width: auto;
+}
+
 .header {
   display: flex;
   justify-content: center;

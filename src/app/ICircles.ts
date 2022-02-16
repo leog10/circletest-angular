@@ -14,4 +14,6 @@ export interface ICircle {
     duration: number;
     animation: string;
     animationDelay: number;
+
+    title: string;
   }

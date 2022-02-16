@@ -1,54 +1,6 @@
 {
   "circles": [
     {
-      "current": 70,
-      "max": 100,
-      "radius": 80,
-      "semicircle": false,
-      "stroke": 25,
-      "rounded": true,
-      "responsive": false,
-      "clockwise": true,
-      "color": "#fe680b",
-      "background": "#eaeaea",
-      "duration": 800,
-      "animation": "easeOutBounce",
-      "animationDelay": 0,
-      "id": 20221644979167696
-    },
-    {
-      "current": 100,
-      "max": 100,
-      "radius": 80,
-      "semicircle": false,
-      "stroke": 25,
-      "rounded": true,
-      "responsive": false,
-      "clockwise": true,
-      "color": "#67209d",
-      "background": "#eaeaea",
-      "duration": 800,
-      "animation": "easeOutBounce",
-      "animationDelay": 0,
-      "id": 20221644979205784
-    },
-    {
-      "current": 77,
-      "max": 100,
-      "radius": 80,
-      "semicircle": false,
-      "stroke": 25,
-      "rounded": true,
-      "responsive": false,
-      "clockwise": true,
-      "color": "#e46c4e",
-      "background": "#eaeaea",
-      "duration": 800,
-      "animation": "easeOutBounce",
-      "animationDelay": 0,
-      "id": 20221644979593040
-    },
-    {
       "current": 71,
       "max": 100,
       "radius": 80,
@@ -57,15 +9,16 @@
       "rounded": true,
       "responsive": false,
       "clockwise": true,
-      "color": "#6346ce",
+      "color": "#28b839",
       "background": "#eaeaea",
       "duration": 800,
       "animation": "easeOutBounce",
       "animationDelay": 0,
-      "id": 20221644980424050
+      "title": "Javascript",
+      "id": 20221645051021692
     },
     {
-      "current": 79,
+      "current": 70,
       "max": 100,
       "radius": 80,
       "semicircle": false,
@@ -73,12 +26,13 @@
       "rounded": true,
       "responsive": false,
       "clockwise": true,
-      "color": "#1fa82d",
+      "color": "#e03124",
       "background": "#eaeaea",
       "duration": 800,
       "animation": "easeOutBounce",
       "animationDelay": 0,
-      "id": 20221644980429772
+      "title": "Angular",
+      "id": 20221645051035336
     }
   ]
 }

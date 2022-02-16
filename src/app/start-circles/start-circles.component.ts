@@ -21,6 +21,8 @@ export class StartCirclesComponent implements OnInit {
 
   constructor(private circlesDbService: CirclesDbService, private router: Router) { }
 
+  circleTitle: string = "Ingrese un Titulo";
+
   hasRoute(route: string) {
     return this.router.url === route;
   }
