@@ -108,21 +108,15 @@ export class CircleComponent {
     };
   }
 
-  //Obtiene los objetos de la database y por iteracion le asigna una id unica al nuevo circulo
-  getCirclesFromDb() {
-    this.circlesDbService.getData().subscribe((data) => {
-      let idIterator = 1;
-      for (let circle of data ) {
-        if (idIterator === circle.id) {
-          idIterator++;
-        }
-      }
-      this.circle.id = idIterator;
-    });
+  generateId() {
+    let year = new Date().getFullYear();
+    let date = Date.now();
+    let id = `${year}${date}`
+    this.circle.id = Number(id);
   }
 
   ngOnInit(): void {
-    this.getCirclesFromDb();
+    this.generateId()
     setTimeout (() => {
     this.circlesDbService.addCircle(this.circle).subscribe();
    }, 100);

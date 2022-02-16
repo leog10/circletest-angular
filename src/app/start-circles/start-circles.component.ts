@@ -63,22 +63,12 @@ export class StartCirclesComponent implements OnInit {
     this.countdownTimer(5, buttonSave, 'Guardar');
   }
 
-  increment(id: number, amount = 1) {
-    for (let dato of this.circulos) {
-      if (dato.id === id) {
-        dato.current += amount;
-        document.getElementById('saveButton'+(id.toString()))?.removeAttribute('disabled');
-      }
-    }
-  }
+  increment(circle: ICircle, amount = 1) {
+    circle.current += amount;
+  }  
 
-  decrement(id: number, amount = 1) {
-    for (let dato of this.circulos) {
-      if (dato.id === id) {
-        dato.current -= amount;
-        document.getElementById('saveButton'+(id.toString()))?.removeAttribute('disabled');
-      }
-    }
+  decrement(circle: ICircle, amount = 1) {
+    circle.current -= amount;    
   }
 
   getOverlayStyle(id: number) {

@@ -16,10 +16,10 @@ export class CircleService {
     circleEl.addEventListener('closing', () => circleEl.setAttribute('class','closing'));
     
     // Listen to the close event
-    circleEl.addEventListener('closed', () => document.body.removeChild(circleEl));
-
+    circleEl.addEventListener('closed', () => document.getElementById('appStartCircles')?.removeChild(circleEl));
+   
     // Add to the DOM
-    document.body.appendChild(circleEl);
+    document.getElementById('appStartCircles')?.appendChild(circleEl);    
   }
 } 
 

@@ -1,7 +1,6 @@
 import { Component, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { CircleComponent } from './circle/circle.component';
-import { StartCirclesComponent } from './start-circles/start-circles.component';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +10,8 @@ export class AppComponent {
   constructor(injector: Injector) {
     // Convert `CircleComponent and StartCirclesComponent` to a custom element.
     const CircleElement = createCustomElement(CircleComponent, {injector});
-    const startCirclesEl = createCustomElement(StartCirclesComponent, {injector});
     // Register the custom element with the browser.
     customElements.define('circle-element', CircleElement);
-    customElements.define('start-circles', startCirclesEl);
   }
 }
 

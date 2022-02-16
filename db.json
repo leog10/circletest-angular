@@ -1,7 +1,7 @@
 {
   "circles": [
     {
-      "current": 51,
+      "current": 70,
       "max": 100,
       "radius": 80,
       "semicircle": false,
@@ -9,15 +9,15 @@
       "rounded": true,
       "responsive": false,
       "clockwise": true,
-      "color": "#ce9546",
+      "color": "#fe680b",
       "background": "#eaeaea",
       "duration": 800,
       "animation": "easeOutBounce",
       "animationDelay": 0,
-      "id": 1
+      "id": 20221644979167696
     },
     {
-      "current": 61,
+      "current": 100,
       "max": 100,
       "radius": 80,
       "semicircle": false,
@@ -25,12 +25,60 @@
       "rounded": true,
       "responsive": false,
       "clockwise": true,
-      "color": "#701daf",
+      "color": "#67209d",
       "background": "#eaeaea",
       "duration": 800,
       "animation": "easeOutBounce",
       "animationDelay": 0,
-      "id": 2
+      "id": 20221644979205784
+    },
+    {
+      "current": 77,
+      "max": 100,
+      "radius": 80,
+      "semicircle": false,
+      "stroke": 25,
+      "rounded": true,
+      "responsive": false,
+      "clockwise": true,
+      "color": "#e46c4e",
+      "background": "#eaeaea",
+      "duration": 800,
+      "animation": "easeOutBounce",
+      "animationDelay": 0,
+      "id": 20221644979593040
+    },
+    {
+      "current": 71,
+      "max": 100,
+      "radius": 80,
+      "semicircle": false,
+      "stroke": 25,
+      "rounded": true,
+      "responsive": false,
+      "clockwise": true,
+      "color": "#6346ce",
+      "background": "#eaeaea",
+      "duration": 800,
+      "animation": "easeOutBounce",
+      "animationDelay": 0,
+      "id": 20221644980424050
+    },
+    {
+      "current": 79,
+      "max": 100,
+      "radius": 80,
+      "semicircle": false,
+      "stroke": 25,
+      "rounded": true,
+      "responsive": false,
+      "clockwise": true,
+      "color": "#1fa82d",
+      "background": "#eaeaea",
+      "duration": 800,
+      "animation": "easeOutBounce",
+      "animationDelay": 0,
+      "id": 20221644980429772
     }
   ]
 }

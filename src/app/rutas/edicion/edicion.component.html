@@ -1,5 +1,11 @@
 <div class="botonCrear">
-  <button type="button" [disabled]="buttonDisabled" (click)="createNewCirlce()">
+  <button
+    id="newCircle"
+    type="button"
+    [disabled]="false"
+    (click)="createNewCirlce()"
+  >
     Crear Circulo
   </button>
 </div>
+<app-start-circles id="appStartCircles"></app-start-circles>

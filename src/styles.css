@@ -1,3 +1,23 @@
+h1 {
+  margin: 10px auto;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #45ccce;
+  position: sticky;
+  top: 0%;
+  z-index: 999;
+}
+
+.botonCrear {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
 .progress-wrapper {
   position: relative;
   margin: 20px auto;
@@ -13,14 +33,18 @@
 
 .container {
   width: 100%;
-  max-width: 650px;
-  margin: 40px auto 40px;
+  max-width: 550px;
+  min-width: 450px;
+  margin: 10px 10px;
   padding: 25px;
   text-align: center;
-  padding: 25px;
   background: #fff;
   border: solid 1px #ccc;
   border-radius: 4px;
+}
+
+.nav {
+  margin: 40px auto;
 }
 
 round-progress {
@@ -97,9 +121,4 @@ input[type="color"] {
 
 .cf:after {
   clear: both;
-}
-
-.editCurrentContainer {
-  display: flex;
-  justify-content: center;
 }

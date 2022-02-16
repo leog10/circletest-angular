@@ -1,4 +1,4 @@
-<ng-container *ngIf="hasRoute('/edicion')">
+<ng-container *ngIf="hasRoute('/edicion'); else inicioTemplate">
   <div class="container" *ngFor="let circle of circulos" [id]="circle.id">
     <div class="progress-wrapper">
       <div class="current" [ngStyle]="getOverlayStyle(circle.id!)">
@@ -21,11 +21,14 @@
       ></round-progress>
     </div>
 
-    <button (click)="increment(circle.id!)">Incrementar</button>
-    <button (click)="decrement(circle.id!)">Reducir</button>
-
-    <button (click)="increment(circle.id!, 10)">Incrementar (10)</button>
-    <button (click)="decrement(circle.id!, 10)">Reducir (10)</button>
+    <div>
+      <button (click)="increment(circle)">Incrementar</button>
+      <button (click)="decrement(circle)">Reducir</button>
+    </div>
+    <div>
+      <button (click)="increment(circle, 10)">Incrementar (10)</button>
+      <button (click)="decrement(circle, 10)">Reducir (10)</button>
+    </div>
 
     <form>
       <h3>Customize!</h3>
@@ -163,3 +166,27 @@
     </form>
   </div>
 </ng-container>
+<ng-template #inicioTemplate>
+  <div class="container" *ngFor="let circle of circulos" [id]="circle.id">
+    <div class="progress-wrapper">
+      <div class="current" [ngStyle]="getOverlayStyle(circle.id!)">
+        {{ circle.current }}%
+      </div>
+      <round-progress
+        [current]="circle.current"
+        [max]="circle.max"
+        [semicircle]="circle.semicircle"
+        [radius]="circle.radius"
+        [color]="circle.color"
+        [background]="circle.background"
+        [stroke]="circle.stroke"
+        [rounded]="circle.rounded"
+        [clockwise]="circle.clockwise"
+        [responsive]="circle.responsive"
+        [duration]="circle.duration"
+        [animation]="circle.animation"
+        [animationDelay]="circle.animationDelay"
+      ></round-progress>
+    </div>
+  </div>
+</ng-template>

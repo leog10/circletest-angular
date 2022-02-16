@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { Circle } from './Circle';
 import { CircleComponent } from './circle/circle.component';
 import { CircleService } from './services/circle.service';
-import { StartCirclesService } from './services/start-circles.service';
 import { StartCirclesComponent } from './start-circles/start-circles.component';
 import { InicioComponent } from './rutas/inicio/inicio.component';
 import { EdicionComponent } from './rutas/edicion/edicion.component';
@@ -23,7 +22,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [BrowserModule, BrowserAnimationsModule, RoundProgressModule, HttpClientModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(routes)],
-  providers: [CircleService, StartCirclesService, Circle],
+  providers: [CircleService, Circle],
   declarations: [AppComponent, CircleComponent, StartCirclesComponent, InicioComponent, EdicionComponent, HeaderComponent],
   bootstrap: [AppComponent],
 })
