@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CircleService } from 'src/app/services/circle.service';
+import { CircleService } from '../../services/circle.service';
 
 @Component({
   selector: 'app-edicion',
