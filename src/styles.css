@@ -2,15 +2,16 @@ h1 {
   margin: 10px auto;
 }
 
-.circleTitleContainer {
+.circle-title-container {
   display: inline-flex;
   width: auto;
 }
 
-.circleTitle {
+.circle-title {
   text-align: center;
   font-size: 35px;
   width: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .header {
@@ -23,7 +24,7 @@ h1 {
   z-index: 999;
 }
 
-.botonCrear {
+.boton-crear {
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -48,15 +49,32 @@ h1 {
   max-width: 550px;
   min-width: 450px;
   margin: 10px 10px;
-  padding: 25px;
+  padding: 25px 0px;
   text-align: center;
-  background: #fff;
-  border: solid 1px #ccc;
-  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.01);
+  border-radius: 0.25rem;
+  transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all ease-in 0.1s;
+  -o-transition: all ease-in 0.1s;
+}
+
+.container:hover {
+  box-shadow: 0 0 17px 0 hsl(0deg 0% 42% / 30%);
+  transform: translateY(-2px);
 }
 
 .nav {
   margin: 40px auto;
+  width: 100%;
+  max-width: 550px;
+  min-width: 450px;
+  padding: 25px 0px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  border-radius: 0.25rem;
 }
 
 round-progress {
@@ -80,7 +98,7 @@ button:disabled {
   background: #cccccc;
 }
 
-.buttonContainer {
+.button-container {
   display: flex;
   flex-direction: column;
 }

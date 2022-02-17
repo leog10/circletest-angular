@@ -1,7 +1,7 @@
 <ng-container *ngIf="hasRoute('/edicion'); else inicioTemplate">
   <div class="container" *ngFor="let circle of circulos" [id]="circle.id">
-    <div class="circleTitleContainer">
-      <input class="circleTitle" type="text" [(ngModel)]="circle.title" />
+    <div class="circle-title-container">
+      <input class="circle-title" type="text" [(ngModel)]="circle.title" />
     </div>
     <div class="progress-wrapper">
       <div class="current" [ngStyle]="getOverlayStyle(circle.id!)">
@@ -151,7 +151,7 @@
         />
       </div>
 
-      <div class="buttonContainer">
+      <div class="button-container">
         <button
           [id]="'saveButton' + circle.id"
           [disabled]="false"
