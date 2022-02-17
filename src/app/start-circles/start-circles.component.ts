@@ -117,7 +117,12 @@ export class StartCirclesComponent implements OnInit {
       if (this.circulos.length === 0) {
         this.closed.emit();
       }      
-    }, 450);    
+    }, 450);
+
+    let newCircleButton = (<HTMLInputElement> document.getElementById('newCircle'));
+    let divMaxCirclesReached = (<HTMLInputElement> document.getElementById('maxCirclesReached'));
+      newCircleButton.disabled = false;
+      divMaxCirclesReached.style.display = 'none';    
   }
 
   getCirclesFromDb() {

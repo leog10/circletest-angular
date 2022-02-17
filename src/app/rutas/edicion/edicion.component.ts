@@ -11,10 +11,16 @@ export class EdicionComponent {
   constructor(private circle: CircleService) { }
 
   createNewCirlce() {
-    this.circle.showAsElement();    
     let newCircleButton = (<HTMLInputElement> document.getElementById('newCircle'));
-    newCircleButton.disabled = true;
-    this.countdownTimer(5,newCircleButton,'Crear Circulo')
+    let divMaxCirclesReached = (<HTMLInputElement> document.getElementById('maxCirclesReached'));
+    if (document.getElementById('appStartCircles')!.childElementCount > 5) {
+      newCircleButton.disabled = true;
+      divMaxCirclesReached.style.display = '';      
+    } else {
+      this.circle.showAsElement();
+      newCircleButton.disabled = true;
+      this.countdownTimer(5,newCircleButton,'Crear Circulo') 
+    }
   }
 
   countdownTimer(timerInSeconds: number, element: HTMLInputElement, textToShow: string){

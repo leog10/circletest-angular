@@ -56,6 +56,11 @@ export class CircleComponent {
       this.closed.emit();
       this.borrarCirculoEnDb(circle);      
    }, 450);
+
+   let newCircleButton = (<HTMLInputElement> document.getElementById('newCircle'));
+   let divMaxCirclesReached = (<HTMLInputElement> document.getElementById('maxCirclesReached'));
+    newCircleButton.disabled = false;
+    divMaxCirclesReached.style.display = 'none';
   }
 
   countdownTimer(timerInSeconds: number, element: HTMLInputElement, textToShow: string){
